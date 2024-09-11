@@ -24,7 +24,7 @@ router.post("/registration", async (req, res) => {
       delete user.dataValues.password;
       res.locals.user = user;
 
-      const { accessToken, refreshToken } = generateTokens(user);
+      const { accessToken, refreshToken } = generateTokens({user});
       res
         .status(201)
         .cookie("refreshToken", refreshToken, {
@@ -47,13 +47,25 @@ router.post("/authorization", async (req, res) => {
       return res.status(400).json({ message: "Empty values" });
     }
 
+    console.log(email, password);
+    
+
     let user = await UserServices.getUser(email);
 
+    console.log(user);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
     if (user) {
-      const compare = jwt.compare(password, user.password);
+      const compare = await bcrypt.compare(password, user.password);
+      console.log(compare);
+      
       if (compare) {
         const { accessToken, refreshToken } = generateTokens(user);
-
+        console.log(accessToken, refreshToken);
+        
         res
           .status(200)
           .cookie("refreshToken", refreshToken, {
@@ -61,11 +73,12 @@ router.post("/authorization", async (req, res) => {
             httpOnly: true,
           })
           .json({ message: "success", user, accessToken });
+          return
       }
       return res.status(400).json({ message: "Wrong password" });
     }
   } catch ({ error }) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error });
   }
 });
 
@@ -74,7 +87,7 @@ router.delete("/logout", (req, res) => {
         res.locals.user = undefined
         res.clearCookie('refreshToken').status(200).json({message: 'success'})
     } catch ({error}) {
-        res.status(500).json({message: error.message})
+        res.status(500).json({message: error })
     }
 })
 
