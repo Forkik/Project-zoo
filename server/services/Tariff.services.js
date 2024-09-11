@@ -11,9 +11,9 @@ class TrafficService {
     return tariff ? tariff.get() : null;
   };
 
-  static createTariff = async ({ status, auditorium }) => {
+  static createTariff = async ({ status, auditorium, price, userId }) => {
     let tariff;
-    tariff = await Tariff.create({ status, auditorium });
+    tariff = await Tariff.create({ status, auditorium, price, userId });
     return tariff.get();
   };
 
