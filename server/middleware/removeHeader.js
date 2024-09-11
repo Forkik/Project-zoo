@@ -1,6 +1,6 @@
 const removeHeader = (req, res, next) => {
   res.removeHeader("X-Powered-By");
-  next;
+  next();
 };
 
 module.exports = removeHeader;
