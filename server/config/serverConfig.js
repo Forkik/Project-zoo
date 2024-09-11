@@ -6,7 +6,7 @@ const serverConfig = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json())
   app.use(cookieParser())
-  app.use(removeHeader())
+  app.use(removeHeader)
 };
 
 module.exports = serverConfig

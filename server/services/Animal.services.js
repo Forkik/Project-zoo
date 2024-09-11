@@ -4,8 +4,10 @@ class AnimalServices {
 
     static getAllAnimals = async() => {
         try {
-            const animals = await Animal.findall()
-            return animals            
+            return (await Animal.findAll()).map((animal) =>
+                animal.get()
+              );
+                  
         } catch ({message}) {
             return {status: 'error', message}
         }
