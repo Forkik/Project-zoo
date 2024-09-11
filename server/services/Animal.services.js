@@ -33,9 +33,9 @@ class AnimalServices {
         }
     }
 
-    static updateAnimal = async(id, data) => {
+    static updateAnimal = async(id, userId, data) => {
         try {
-            const animal = await Animal.findByPk(id)
+            const animal = await Animal.findOne({where: {id, userId}})
         if(animal){
             return animal.update(data)
         }
@@ -46,9 +46,9 @@ class AnimalServices {
     }
 
 
-    static deleteAnimal = async(id) => {
+    static deleteAnimal = async(id, userId) => {
         try {
-            const animal = await Animal.findByPk(id)
+            const animal = await Animal.findOne({where: {id, userId}})
             if(animal){
                 animal.destroy
                 return true
