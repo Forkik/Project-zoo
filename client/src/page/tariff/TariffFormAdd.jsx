@@ -39,12 +39,12 @@ function TariffFormAdd({ setTariffs }) {
         onChange={(e) => setAuditorium(e.target.value)}
       />
       <input
-        type="text"
+        type="number"
         value={price}
         onChange={(e) => setPrice(+e.target.value)}
       />
       <button type="submit">добавить</button>
-      {status !== "" && auditorium !== "" && price !== ""}
+      {status !== "" && auditorium !== "" }
     </form>
   );
 }
