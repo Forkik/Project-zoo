@@ -4,7 +4,7 @@ import AnimalItem from './AnimalItem';
 
 
 function AnimalPage({ animals, setAnimals }) {
-    console.log(animals);
+    // console.log(animals);
     
     // {user && user.isAdmin === true &&
   return (

@@ -14,12 +14,12 @@ function AnimalFormAdd({ setAnimals }) {
     const onHandleSubmit = async(e) => {
         try {
             e.preventDefault()
-            if(user && user.isAdmin && (title.trim() !== '' && description.trim() !== '' && image.trim() !== '')) {
-                const response = await axiosRequest.post('/animals', {title, description, image, userId: user.id})
+            // if(user && user.isAdmin && (title.trim() !== '' && description.trim() !== '' && image.trim() !== '')) {
+                const response = await axiosRequest.post('/animals', {title, description, image, userId: 1})
                 if(response.status === 201){
                     setAnimals(prev => [...prev, response.data.animal])
                 }
-            }
+            // }
            
         } catch (error) {
             console.log(error);

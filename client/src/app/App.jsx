@@ -14,9 +14,7 @@ function App() {
           const response = await axiosRequest.get('/animals')
           if(response.status === 200){
             setAnimals(response.data.animals)
-            
-            
-            
+              
           } 
         } catch (error) {
             console.log(error);
