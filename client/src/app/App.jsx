@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import AnimalPage from "../page/animals/AnimalPage";
-import { axiosRequest } from "../services/axiosInstance";
-import { AppContext } from "./AppContext";
+import { axiosRequest, setAccessToken } from "../service/axiosInstance";
+import { AppContext } from '../AppContext'
 import RegPage from "../page/auth/RegPage";
 import HomePage from "../page/HomePage";
 import AuthPage from "../page/auth/AuthPage";
@@ -29,7 +29,8 @@ function App() {
       const response = await axiosRequest.get("/tokens/refresh");
       console.log(111, response);
       if (response.status === 200) {
-        setUser(response.data.accessToken);
+        setUser(response.data.user);
+        setAccessToken(response.data.setAccessToken)
       }
     } catch ({ response }) {
       console.log(response);
@@ -52,8 +53,12 @@ function App() {
     getAllTariff();
   }, []);
 
+  // console.log(user);
+  
+
   return (
     <AppContext.Provider value={{ user, setUser }}>
+      {/* {user && <h1>{`Hello, ${user.name}`}</h1>} */}
       <Routes>
         <Route path="/animals" element={<AnimalPage animals={animals} setAnimals={setAnimals} />} />
         <Route path="/" element={<HomePage />} />
