@@ -8,6 +8,8 @@ function HomePage({}) {
       <button onClick={() => navigate("/authorization")}>authorization</button>
       <button onClick={() => navigate("/registration")}>registration</button>
       <button onClick={() => navigate("/logout")}>logout</button>
+      <button onClick={() => navigate("/animals")}>animals</button>
+      <button onClick={() => navigate("/tariffs")}>tariffs</button>
     </div>
   );
 }

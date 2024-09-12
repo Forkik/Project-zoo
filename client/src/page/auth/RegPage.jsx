@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { AppContext } from "../AppContext";
-import { axiosRequest, setAccessToken } from "../service/axiosInstance";
+import { AppContext } from "../../AppContext";
+import { axiosRequest, setAccessToken } from "../../service/axiosInstance";
 import { useNavigate } from "react-router-dom";
 function RegPage() {
   const [showPassword, setShowPassword] = useState(false);
