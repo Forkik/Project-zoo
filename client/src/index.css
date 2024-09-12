@@ -1,0 +1,121 @@
+*{
+    /* color: white !important; */
+    font-family: "Merriweather", monospace;
+    letter-spacing: 1px; 
+}
+
+.nav-link:hover{
+    cursor: pointer;
+}
+
+.navbar {
+    background-color: rgba(0, 66, 113, 0.408) !important; /* Полупрозрачный чёрный фон */
+    position: fixed; /* Фиксируем навбар */
+    box-shadow: #01334e 0px 0px 15px;
+    border: none;
+    top: 0;
+    width: 100%;
+    font-weight: 700;
+    z-index: 1000; /* Поднимаем навбар над другими элементами */
+    backdrop-filter: blur(5px); /* Добавляем небольшое размытие фона */
+    color: white;
+}
+.body {
+    position: relative; /* Добавлено для управления z-index */
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, rgb(255, 31, 68), rgb(98, 0, 255), rgb(0, 191, 255));
+    z-index: 1; /* Фон ниже */
+}
+
+.text-success {
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.text{
+
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .img-fluid {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Тень для текста */
+    text-align: center;
+  }
+
+
+
+.image-container {
+    position: absolute; /* Изменено для наложения */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Изображение выше фона */
+}
+
+.fs-1 {
+    color: white;
+    font-size: 4rem !important;
+    font-weight: 700 !important;
+}
+
+.background{
+    background: #01334e;
+    height: 60% !important;
+}
+
+.color-text-white{
+    color: white;
+}
+
+/* styles.css */
+
+  
+  .background {
+    min-height: 400px; /* Увеличивает высоту контейнера с текстом */
+  }
+  
+  .btn-primary{
+    background-color: #01517d !important;
+    border: none;
+  }
+
+  .btn-primary:hover{
+    background-color: #01334e !important;
+  }
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 20;    
+  font-size: 16px; /* Установите желаемый размер */
+  margin-left: 8px; 
+}
+
+.btn-center{
+  margin: 0 auto;
+}
+
+.top{
+    margin-top: 2%; ;
+}

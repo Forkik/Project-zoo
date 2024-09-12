@@ -1,5 +1,5 @@
 import React, {useState} from'react';
-import { axiosRequest } from '../../services/axiosInstance';
+import { axiosRequest } from '../../service/axiosInstance';
 function TariffUpdateForm({ tariff, setTariffs }) {
     const [status, setStatus] = useState(tariff.status)
     const [auditorium, setAuditorium] = useState(tariff.auditorium)

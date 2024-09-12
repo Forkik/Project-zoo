@@ -1,5 +1,5 @@
 import React, { useState, useContext } from'react';
-import {axiosRequest} from '../../services/axiosInstance'
+import {axiosRequest} from '../../service/axiosInstance'
 import { AppContext } from '../../app/AppContext'
 
 

@@ -1,5 +1,5 @@
 import React, {useState} from'react';
-import { axiosRequest } from '../../services/axiosInstance';
+import { axiosRequest } from '../../service/axiosInstance';
 function AnimalUpdateFormAdd({ animal, setAnimals, isActive }) {
 
     const [title, setTitle] = useState(animal.title)
