@@ -3,8 +3,8 @@ const { User } = require("../db/models");
 class UserService {
   static getUser = async (email) => {
     const users = await User.findOne({ where: { email } });
-    if (user) {
-      return user;
+    if (users) {
+      return users.get();
     }
     return null
   };
