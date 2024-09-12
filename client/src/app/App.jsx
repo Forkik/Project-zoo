@@ -8,6 +8,9 @@ import HomePage from "../page/HomePage";
 import AuthPage from "../page/auth/AuthPage";
 import LogoutPage from "../page/auth/LogoutPage";
 import TariffPage from "../page/tariff/TariffPage";
+import Navbar from "../widgets/navbar/Navbar";
+import { setAccessToken } from "../service/axiosInstance";
+import Footer from "../widgets/footer/Footer";
 function App() {
   const [user, setUser] = useState(undefined);
   const [animals, setAnimals] = useState([]);
@@ -53,20 +56,26 @@ function App() {
     getAllTariff();
   }, []);
 
-  // console.log(user);
   
 
   return (
     <AppContext.Provider value={{ user, setUser }}>
-      {/* {user && <h1>{`Hello, ${user.name}`}</h1>} */}
+      <Navbar />
       <Routes>
-        <Route path="/animals" element={<AnimalPage animals={animals} setAnimals={setAnimals} />} />
+        <Route
+          path="/animals"
+          element={<AnimalPage animals={animals} setAnimals={setAnimals} />}
+        />
         <Route path="/" element={<HomePage />} />
         <Route path="/authorization" element={<AuthPage />} />
         <Route path="/registration" element={<RegPage />} />
         <Route path="/logout" element={<LogoutPage />} />
-        <Route path="/tariffs" element={<TariffPage tariffs={tariffs} setTariffs={setTariffs} />}/>
+        <Route
+          path="/tariffs"
+          element={<TariffPage tariffs={tariffs} setTariffs={setTariffs} />}
+        />
       </Routes>
+      <Footer />
     </AppContext.Provider>
   );
 }

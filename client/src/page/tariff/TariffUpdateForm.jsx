@@ -2,7 +2,6 @@ import React, {useState} from'react';
 import { axiosRequest } from '../../service/axiosInstance';
 import ModalWindow from '../shared/ui/ModalWindw';
 
-
 function TariffUpdateForm({ tariff, setTariffs, setActive }) {
     const [status, setStatus] = useState(tariff.status)
     const [auditorium, setAuditorium] = useState(tariff.auditorium)
