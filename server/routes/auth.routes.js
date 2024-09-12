@@ -24,7 +24,7 @@ router.post("/registration", async (req, res) => {
       delete user.dataValues.password;
       res.locals.user = user;
 
-      const { accessToken, refreshToken } = generateTokens({user});
+      const { accessToken, refreshToken } = generateTokens({ user });
       res
         .status(201)
         .cookie("refreshToken", refreshToken, {
@@ -48,11 +48,8 @@ router.post("/authorization", async (req, res) => {
     }
 
     console.log(email, password);
-    
 
     let user = await UserServices.getUser(email);
-
-    console.log(user);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -60,12 +57,10 @@ router.post("/authorization", async (req, res) => {
 
     if (user) {
       const compare = await bcrypt.compare(password, user.password);
-      console.log(compare);
-      
+
       if (compare) {
-        const { accessToken, refreshToken } = generateTokens(user);
-        console.log(accessToken, refreshToken);
-        
+        const { accessToken, refreshToken } = generateTokens({ user });
+
         res
           .status(200)
           .cookie("refreshToken", refreshToken, {
@@ -73,7 +68,7 @@ router.post("/authorization", async (req, res) => {
             httpOnly: true,
           })
           .json({ message: "success", user, accessToken });
-          return
+        return;
       }
       return res.status(400).json({ message: "Wrong password" });
     }
@@ -83,12 +78,12 @@ router.post("/authorization", async (req, res) => {
 });
 
 router.delete("/logout", (req, res) => {
-    try {
-        res.locals.user = undefined
-        res.clearCookie('refreshToken').status(200).json({message: 'success'})
-    } catch ({error}) {
-        res.status(500).json({message: error })
-    }
-})
+  try {
+    res.locals.user = undefined;
+    res.clearCookie("refreshToken").status(200).json({ message: "success" });
+  } catch ({ error }) {
+    res.status(500).json({ message: error });
+  }
+});
 
 module.exports = router;
