@@ -5,6 +5,6 @@ const tariffRoutes = require("./tariff.routes");
 
 router.use("/auth", authRouter);
 router.use("/animals", animalsRouter);
-router.use("/tariff", tariffRoutes);
+router.use("/tariffs", tariffRoutes);
 
 module.exports = router;

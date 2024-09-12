@@ -3,9 +3,9 @@ const { Tariff } = require("../db/models");
 const tariff = require("../db/models/tariff");
 
 class TrafficService {
-  static getAllTariff = async (query) =>
-    (await Tariff.findAll({ where: query })).map((tariff) => tariff.get());
-
+  static getAllTariffs = async () => {
+   return (await Tariff.findAll()).map((tariff) => tariff.get());
+  }
   static getTariffById = async (id) => {
     const tariff = await Tariff.findOne({ where: id });
     return tariff ? tariff.get() : null;
