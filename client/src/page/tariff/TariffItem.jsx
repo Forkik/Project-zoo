@@ -1,5 +1,5 @@
 import React from'react';
-import { axiosRequest } from '../../services/axiosInstance';
+import { axiosRequest } from '../../service/axiosInstance';
 import TariffUpdateForm from './TariffUpdateForm';
 
 

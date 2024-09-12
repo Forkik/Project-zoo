@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const AnimalServices = require('../services/Animal.services')
-// const verifyAccessToken = require('../middleware/verifyAccessToken')
+const verifyAccessToken = require('../middleware/verifyAccessToken')
 
 router.get('/', async(req, res) => {
     try {
@@ -26,32 +26,43 @@ router.get('/:animalId', async(req, res) => {
     }
 })
 
-router.post('/', async(req, res) => {
+router.post('/', verifyAccessToken, async(req, res) => {
     try {
         // const userId = res.locals.user.id
         const {title, description, image}  = req.body
-        const animal = await AnimalServices.createAnimal({title, description, image, userId: 1})
-        res.status(201).json({message: 'success', animal})
+        if(title.trim() && description.trim() && image.trim()){
+            const animal = await AnimalServices.createAnimal({title, description, image, userId: 1})
+            res.status(201).json({message: 'success', animal})
+        } else {
+            res.status(403).json({message: 'Empty fields'})
+        }
+       
     } catch ({message}) {
         res.status(500).json({error: message})
     }
 })
 
-router.put('/:animalId', async(req, res) => {
+router.put('/:animalId', verifyAccessToken, async(req, res) => {
     try {
-        // const userId = res.locals.user.id
+        const userId = res.locals.user.id
         const {animalId} = req.params
         const {title, description, image}  = req.body
+        console.log( title, description, image);
+        
+        if(title.trim() !== ''  && description.trim() !== '' && image.trim() !== ''){
         const animal = await AnimalServices.updateAnimal(+animalId, 1, {title, description, image})
-        res.status(200).json({message: 'success', animal})
+        res.status(200).json({message: 'success', animal, verifyAccessToken})
+    } else {
+        res.status(403).json({message: 'Empty fields', verifyAccessToken})
+    }
     } catch ({message}) {
-        res.status(500).json({error: message})
+        res.status(500).json({error: message, verifyAccessToken})
     }
 })
 
-router.delete('/:animalId', async(req, res) => {
+router.delete('/:animalId', verifyAccessToken, async(req, res) => {
     try {
-        // const userId = res.locals.user.id
+        const userId = res.locals.user.id
         const {animalId} = req.params
         const animal = await AnimalServices.deleteAnimal(+animalId, 1)
         if (animal) {
