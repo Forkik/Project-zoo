@@ -3,10 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import AnimalPage from "../page/animals/AnimalPage";
 import { axiosRequest } from "../services/axiosInstance";
 import { AppContext } from "./AppContext";
-import RegPage from "./pages/RegPage";
-import HomePage from "./page/auth/HomePage";
-import AuthPage from "./page/auth/AuthPage";
-import LogoutPage from "./pages/LogoutPage";
+import RegPage from "../page/auth/RegPage";
+import HomePage from "../page/HomePage";
+import AuthPage from "../page/auth/AuthPage";
+import LogoutPage from "../page/auth/LogoutPage";
 import TariffPage from "../page/tariff/TariffPage";
 function App() {
   const [user, setUser] = useState(undefined);
@@ -55,18 +55,12 @@ function App() {
   return (
     <AppContext.Provider value={{ user, setUser }}>
       <Routes>
-        <Route
-          path="/animals"
-          element={<AnimalPage animals={animals} setAnimals={setAnimals} />}
-        />
+        <Route path="/animals" element={<AnimalPage animals={animals} setAnimals={setAnimals} />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/authorization" element={<AuthPage />} />
         <Route path="/registration" element={<RegPage />} />
         <Route path="/logout" element={<LogoutPage />} />
-        <Route
-          path="/tariffs"
-          element={<TariffPage tariffs={tariffs} setTariffs={setTariffs} />}
-        />
+        <Route path="/tariffs" element={<TariffPage tariffs={tariffs} setTariffs={setTariffs} />}/>
       </Routes>
     </AppContext.Provider>
   );

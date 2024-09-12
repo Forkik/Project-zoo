@@ -1,7 +1,7 @@
 import React, { useContext } from'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../AppContext';
-import { axiosRequest, setAccessToken } from '../service/axiosInstance';
+import { AppContext } from '../../AppContext';
+import { axiosRequest, setAccessToken } from '../../service/axiosInstance';
 function LogoutPage({ }) {
     const navigate = useNavigate();
   const { setUser } = useContext(AppContext);
