@@ -1,13 +1,20 @@
 import React, {useState} from'react';
 import { axiosRequest } from '../../service/axiosInstance';
-function TariffUpdateForm({ tariff, setTariffs }) {
+import ModalWindow from '../shared/ui/ModalWindw';
+
+
+function TariffUpdateForm({ tariff, setTariffs, setActive }) {
     const [status, setStatus] = useState(tariff.status)
     const [auditorium, setAuditorium] = useState(tariff.auditorium)
     const [price, setPrice] = useState(tariff.price)
+    const [error, setError] = useState(null)
+
+    // const  [active, setActive] = useState(false)
 
 const onHandleChange = async (e) => {
     try {
         e.preventDefault()
+
         const response = await axiosRequest.put(`/tariffs/${tariff.id}`, {
             status,
             auditorium,
@@ -16,14 +23,17 @@ const onHandleChange = async (e) => {
         })
         if(response.status === 200){
             setTariffs(prev => prev.map((el) => el.id === tariff.id ? response.data.tariff : el))
+            setActive(false)
         }
-    } catch ({message}) {
-        console.log(response.data.message);
-        
-    }
-}
+        } catch (error) {
+            setError(error.response ? error.response.data.message : error.message);
+        }
+    };
 
   return (
+    <div>
+
+
       <form onSubmit={onHandleChange}>
         <input 
         type='text'
@@ -34,11 +44,12 @@ const onHandleChange = async (e) => {
         value={auditorium}
         onChange={(e) => setAuditorium(e.target.value)}/>
         <input 
-        type='text'
+        type='number'
         value={price}
         onChange={(e) => setPrice(+e.target.value)}/>
-        <button type='submit'>изменить</button>
+        <button type='submit'>Сохранить</button>
         </form>
+    </div>
   );
 }
 
