@@ -37,7 +37,7 @@ class AnimalServices {
 
     static updateAnimal = async(id, userId, data) => {
         try {
-            const animal = await Animal.findOne({where: {id, userId}})
+            const animal = await Animal.findOne({where: {id, userId: 1}})
         if(animal){
             return animal.update(data)
         }
@@ -52,7 +52,7 @@ class AnimalServices {
         try {
             const animal = await Animal.findOne({where: {id, userId}})
             if(animal){
-                animal.destroy
+                animal.destroy()
                 return true
             }
             return null
