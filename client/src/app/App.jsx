@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import AnimalPage from "../page/animals/AnimalPage";
-import { axiosRequest } from "../service/axiosInstance";
-import { AppContext } from "./AppContext";
+import { axiosRequest, setAccessToken } from "../service/axiosInstance";
+import { AppContext } from '../AppContext'
 import RegPage from "../page/auth/RegPage";
 import HomePage from "../page/HomePage";
 import AuthPage from "../page/auth/AuthPage";
@@ -30,10 +30,10 @@ function App() {
   const checkUser = async () => {
     try {
       const response = await axiosRequest.get("/tokens/refresh");
-      console.log(111, response);
+      // console.log(111, response);
       if (response.status === 200) {
         setUser(response.data.user);
-        setAccessToken(response.data.accessToken);
+        setAccessToken(response.data.setAccessToken)
       }
     } catch ({ response }) {
       console.log(response);
@@ -56,7 +56,6 @@ function App() {
     getAllTariff();
   }, []);
 
-  console.log(user);
   
 
   return (

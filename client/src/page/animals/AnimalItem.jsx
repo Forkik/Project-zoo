@@ -5,12 +5,14 @@ import ModalWindow from '../shared/ui/ModalWindw';
 import AnimalUpdateFormAdd from './AnimalUpdateFormAdd';
 
 
-function AnimalItem({ animal, setAnimals }) {
-    // const {user} = useContext()
+function AnimalItem({ animal, setAnimals,  }) {
+    const {user} = useContext(AppContext)
 
     const  [active, setActive] = useState(false)
+    
    
     const isActive = () => {
+
         setActive(prev => !prev)
     }
 
@@ -30,13 +32,15 @@ function AnimalItem({ animal, setAnimals }) {
     <h3>{animal.title}</h3>
     <p>{animal.description}</p>
     <img src={animal.image} alt='animal' />
-    {/* {user && user.id === animal.userId && ( */}
+    {user && user.id === animal.userId && (
+      <>
         <button onClick={isActive}>update</button>
       <button onClick={onHandleDelete}>delete</button>
       <ModalWindow active={active} setActive={setActive}>
         <AnimalUpdateFormAdd animal={animal} setAnimals={setAnimals} isActive={isActive}/>
       </ModalWindow>
-    {/* )} */}
+      </>
+    )} 
   </div>
   )
 }
