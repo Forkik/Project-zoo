@@ -1,55 +1,27 @@
-import { axiosRequest } from '../../service/axiosInstance';
-import React, { useContext, useState } from "react";
 import { axiosRequest } from "../../service/axiosInstance";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../../AppContext";
+import ModalWindow from "../shared/ui/ModalWindw";
+import TariffFormItem from "./TariffFormItem";
 
-function TariffFormAdd({ setTariffs }) {
-  const [status, setStatus] = useState("");
-  const [auditorium, setAuditorium] = useState("");
-  const [price, setPrice] = useState(0);
-
-  const { user } = useContext(AppContext);
-
-  const onHandleSubmit = async (e) => {
-    try {
-      e.preventDefault()
-      if(user && user.isAdmin && (status.trim() !== '' && auditorium.trim() !== '' && price )) {
-          const response = await axiosRequest.post('/tariffs', {status, auditorium, price, userId: 1})
-          if(response.status === 201){
-            setTariffs(prev => [...prev, response.data.tariff])
-          }
-      }
-      
-      } catch (error) {
-        console.log(error);
-      }
-      };
+function TariffFormAdd({ tariffs, tariff, setTariffs }) {
+  const [active, setActive] = useState(false);
 
   return (
-    <form onSubmit={onHandleSubmit}>
-      <input
-        type="text"
-        placeholder='Статус'
-        value={status}
-        onChange={(e) => setStatus(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder='Аудитория'
-        value={auditorium}
-        onChange={(e) => setAuditorium(e.target.value)}
-      />
-      <input
-        type="number"
-        value={price}
-        onChange={(e) => setPrice(+e.target.value)}
-      />
-      <button type="submit">добавить</button>
-      {status !== "" && auditorium !== "" }
-    </form>
+    <>
+      <button onClick={() => setActive(true)} className="btn btn-primary rounded-0 my-3 w-auto mx-auto text-center d-flex justify-content-center align-items-center btn-center mt-5">Добавить</button>
+      <ModalWindow active={active} setActive={setActive}>
+        <TariffFormItem
+          tariffs={tariffs}
+          tariff={tariff}
+          setTariffs={setTariffs}
+          setActive={setActive}
+        />
+        <button className="btn btn-primary rounded-0 my-3 w-auto mx-auto text-center d-flex justify-content-center align-items-center btn-center" onClick={() => setActive(false)}>Закрыть</button>
+      </ModalWindow>
+      
+    </>
   );
 }
 
 export default TariffFormAdd;
-
-

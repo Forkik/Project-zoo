@@ -5,7 +5,7 @@ function HomePage({}) {
   return (
     <div>
       <div>
-        <img src="./public/turtle.jpg" className="img-fluid" alt="" />
+        <img src="/turtle.jpg" className="img-fluid" alt="" />
         <div className="overlay-text">
           <p className=" fs-3">
             Исследуйте удивительный мир Урюпинского Зоопарка
@@ -61,7 +61,7 @@ function HomePage({}) {
         >
           <div className="card rounded-0">
             <div className="card-body d-flex flex-column">
-              <img src="./public/tiger.jpg" className="img-fluid" alt="" />
+              <img src="/tiger.jpg" className="img-fluid" alt="" />
               <h1 className="card-title text-center fs-4 my-3">
                 Наш тигр по имени: Пуся Джуся
               </h1>
@@ -90,11 +90,9 @@ function HomePage({}) {
         </div>
       </div>
       <div style={{ margin: "0", padding: "0", width: "100%" }}>
-        <div className="container-fluid h-100">
-          <p className="my-5 text-center" style={{ letterSpacing: "0.01px" }}>
-            ___________________________________________________________________________________________________________________________________________
-          </p>
-          <h1 className="title mb-5 text-center">Просмотреть наших животных</h1>
+        <div className="container-fluid h-100 my-5">
+          <div className="border-top"></div>
+          <h1 style={{marginTop: '3%', marginBottom: '4%' }} className="title text-center">Просмотреть наших животных</h1>
           <div
             className="d-flex row mb-5"
             style={{
@@ -162,7 +160,7 @@ function HomePage({}) {
             className="btn rounded-0 my-3 w-auto mx-auto my-5 text-center d-flex justify-content-center align-items-center btn-center mt-5"
             onClick={() => navigate("/animals")}
           >
-            Посмотреть{" "}
+            Посмотреть
             <span className="material-symbols-outlined">arrow_right_alt</span>
           </button>
         </div>

@@ -9,7 +9,6 @@ import AuthPage from "../page/auth/AuthPage";
 import LogoutPage from "../page/auth/LogoutPage";
 import TariffPage from "../page/tariff/TariffPage";
 import Navbar from "../widgets/navbar/Navbar";
-import { setAccessToken } from "../service/axiosInstance";
 import Footer from "../widgets/footer/Footer";
 function App() {
   const [user, setUser] = useState(undefined);

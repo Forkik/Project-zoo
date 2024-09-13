@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+const verifyAccessToken = require("../middleware/verifyAccessToken");
 const TrafficService = require("../services/Tariff.services");
 
 router.get("/", async (req, res) => {
@@ -25,14 +26,16 @@ router.get("/:tariffId", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", verifyAccessToken, async (req, res) => {
   try {
-    const { status, auditorium, price, userId } = req.body;
+    const {user} = res.locals
+    const { image, status, auditorium, price } = req.body;
     const tariff = await TrafficService.createTariff({
+      image,
       status,
       auditorium,
       price,
-      userId: 1,
+      userId: user.id,
     });
 
     if (tariff) {
@@ -45,11 +48,12 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:tariffId", async (req, res) => {
+router.put("/:tariffId",verifyAccessToken, async (req, res) => {
   try {
     const { tariffId } = req.params;
-    const { status, auditorium, price } = req.body;
+    const { image, status, auditorium, price } = req.body;
     const tariff = await TrafficService.updateTariff(tariffId, {
+      image,
       status,
       auditorium,
       price,
@@ -64,7 +68,7 @@ router.put("/:tariffId", async (req, res) => {
   }
 });
 
-router.delete("/:tariffId", async (req, res) => {
+router.delete("/:tariffId", verifyAccessToken ,async (req, res) => {
   try {
     const { tariffId } = req.params;
     const tariff = await TrafficService.removeTariff(tariffId);

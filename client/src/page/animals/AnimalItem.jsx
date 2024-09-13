@@ -1,5 +1,5 @@
 import React, { useContext, useState } from'react';
-import { AppContext } from '../../app/AppContext';
+import { AppContext } from '../../AppContext';
 import { axiosRequest } from '../../service/axiosInstance';
 import ModalWindow from '../shared/ui/ModalWindw';
 import AnimalUpdateFormAdd from './AnimalUpdateFormAdd';
