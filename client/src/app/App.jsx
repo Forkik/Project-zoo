@@ -10,6 +10,8 @@ import LogoutPage from "../page/auth/LogoutPage";
 import TariffPage from "../page/tariff/TariffPage";
 import Navbar from "../widgets/navbar/Navbar";
 import Footer from "../widgets/footer/Footer";
+import ErrorPage from '../page/error/ErrorPage';
+
 function App() {
   const [user, setUser] = useState(undefined);
   const [animals, setAnimals] = useState([]);
@@ -69,6 +71,7 @@ function App() {
         <Route path="/authorization" element={<AuthPage />} />
         <Route path="/registration" element={<RegPage />} />
         <Route path="/logout" element={<LogoutPage />} />
+        <Route path="/*" element={<ErrorPage />} />
         <Route
           path="/tariffs"
           element={<TariffPage tariffs={tariffs} setTariffs={setTariffs} />}
