@@ -17,6 +17,9 @@ function TariffItem({ tariffs, tariff, setTariffs }) {
     }
   };
 
+  // console.log(tariff);
+  
+
   return (
     <div>
       <div
@@ -25,7 +28,7 @@ function TariffItem({ tariffs, tariff, setTariffs }) {
         }}
         className="card bg-white mt-5 mb-3 mx-2 rounded-0 border-0" 
       >
-        <img src='/ticket.jpg' className="card-img-top" alt="" />
+        <img src={`${tariff.image}`} className="card-img-top" alt="" style={{height: '15rem', objectFit: 'cover'}}/>
         <div className="card-body">
           <h3 className="card-title text-center title mt-3">{tariff.status}</h3>
           <div className="d-flex justify-content-center mt-3 ">
@@ -49,7 +52,7 @@ function TariffItem({ tariffs, tariff, setTariffs }) {
           setTariffs={setTariffs}
           setActive={setActive}
         />
-        <button onClick={() => setActive(false)}>Закрыть</button>
+        <button className="btn btn-danger rounded-0 mt-3 w-auto mx-auto text-center d-flex justify-content-center align-items-center btn-center" onClick={() => setActive(false)}>Закрыть</button>
       </ModalWindow>
     </div>
   );

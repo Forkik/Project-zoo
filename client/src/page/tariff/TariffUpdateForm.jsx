@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { axiosRequest } from '../../service/axiosInstance';
+import React, { useState } from "react";
+import { axiosRequest } from "../../service/axiosInstance";
 
 function TariffUpdateForm({ tariffs, tariff, setTariffs, setActive }) {
   const [status, setStatus] = useState(tariff.status);
+  const [image, setImage] = useState(tariff.image);
   const [auditorium, setAuditorium] = useState(tariff.auditorium);
   const [price, setPrice] = useState(tariff.price);
   const [error, setError] = useState(null);
@@ -11,6 +12,7 @@ function TariffUpdateForm({ tariffs, tariff, setTariffs, setActive }) {
     e.preventDefault();
     try {
       const response = await axiosRequest.put(`/tariffs/${tariff.id}`, {
+        image,
         status,
         auditorium,
         price,
@@ -30,9 +32,18 @@ function TariffUpdateForm({ tariffs, tariff, setTariffs, setActive }) {
 
   return (
     <div>
-      <form onSubmit={onHandleChange}>
+      <form className="d-flex flex-column" onSubmit={onHandleChange}>
+      <label class="form-label">Картинка</label>
+        <input
+          className="mb-3 form-control"
+          type="text"
+          onChange={(e) => setImage(e.target.value)}
+        />
         {/* Выбор статуса (Будни, Выходной) */}
+        <label class="form-label">Статус</label>
+
         <select
+          className="mb-3 form-select"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >
@@ -50,7 +61,10 @@ function TariffUpdateForm({ tariffs, tariff, setTariffs, setActive }) {
         </select>
 
         {/* Выбор аудитории */}
+        <label class="form-label">Аудитория</label>
+
         <select
+          className="mb-3 form-select"
           value={auditorium}
           onChange={(e) => setAuditorium(e.target.value)}
         >
@@ -58,7 +72,8 @@ function TariffUpdateForm({ tariffs, tariff, setTariffs, setActive }) {
             tariffs
               .filter(
                 (tarif, index, self) =>
-                  index === self.findIndex((t) => t.auditorium === tarif.auditorium)
+                  index ===
+                  self.findIndex((t) => t.auditorium === tarif.auditorium)
               )
               .map((tarif) => (
                 <option key={tarif.auditorium} value={tarif.auditorium}>
@@ -66,13 +81,15 @@ function TariffUpdateForm({ tariffs, tariff, setTariffs, setActive }) {
                 </option>
               ))}
         </select>
+        <label class="form-label">Цена</label>
 
         <input
+        className="mb-3 form-control"
           type="number"
           value={price}
           onChange={(e) => setPrice(+e.target.value)}
         />
-        <button type="submit">Сохранить</button>
+        <button className="btn btn-primary rounded-0 w-auto mx-auto text-center d-flex justify-content-center align-items-center btn-center" type="submit">Сохранить</button>
         {error && <p>{error}</p>}
       </form>
     </div>

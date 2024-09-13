@@ -10,9 +10,9 @@ function TariffPage({ tariffs, setTariffs }) {
 
   return (
     <div style={{ position: "relative" }}>
-      <img src="ocean.jpg" style={{ width: "100%" }} alt="" />
+      <img src="/ocean.jpg" style={{ width: "100%" }} alt="" />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 1 }}>
-        <h1 className="title fs-1 font-1" style={{ color: "white", textAlign: "center", marginTop: '17%' }}>Тарифы</h1>
+        <h1 className="title fs-1 font-1" style={{ color: "white", textAlign: "center", marginTop: '9%' }}>Тарифы</h1>
         {user && user.isAdmin && (
           <TariffFormAdd tariffs={tariffs} setTariffs={setTariffs} />
         )}
@@ -33,9 +33,9 @@ function TariffPage({ tariffs, setTariffs }) {
         >
           <div className="card rounded-0">
             <div className="card-body d-flex flex-column">
-              <img src="/tiger.jpg" className="img-fluid" alt="" />
+              <img src="/meerkat.jpg" className="img-fluid" alt="" />
               <h1 className="card-title text-center fs-4 my-3">
-                  Наш сурикат по имени: 
+                  Наш сурикат по имени: Натусик Гучик
               </h1>
               <div className="card-text text-center my-3">
               Сурикат из Урюпинска — это один из самых очаровательных и активных обитателей местного зоопарка. Его зовут Мурчик, и он представляет собой социальное животное, живущее в группах. Сурикат привлекает внимание посетителей своей игривостью и любопытством. Он обитает в просторном вольере, который максимально приближен к его естественной среде обитания, с возможностью копать и исследовать.
@@ -54,7 +54,7 @@ function TariffPage({ tariffs, setTariffs }) {
         </div>
         <div className="px-5 mb-4" style={{ flex: "1 1 45%" }}>
           <h1 className="card-title pt-5 color-text-white">
-            Посмотрите какие животные в нашем зоопарке
+             FAQ: Почему зоопарк Урюпинска?
           </h1>
           <p className="card-text mt-5 pb-5 color-text-white">
           В Урюпинске зоопарк предлагает уникальную возможность увидеть множество животных, и в выходные дни цена на вход выше, чем в будние. Это связано с тем, что в выходные зоопарк привлекает больше посетителей, и для поддержания качества обслуживания и заботы о животных необходимо увеличить финансирование.

@@ -1,47 +1,85 @@
-import React, { useContext, useState } from'react';
-import { AppContext } from '../../AppContext';
-import { axiosRequest } from '../../service/axiosInstance';
-import ModalWindow from '../shared/ui/ModalWindw';
-import AnimalUpdateFormAdd from './AnimalUpdateFormAdd';
+import React, { useContext, useState } from "react";
+import { AppContext } from "../../AppContext";
+import { axiosRequest } from "../../service/axiosInstance";
+import ModalWindow from "../shared/ui/ModalWindw";
+import AnimalUpdateFormAdd from "./AnimalUpdateFormAdd";
 
+function AnimalItem({ animal, setAnimals }) {
+  const { user } = useContext(AppContext);
 
-function AnimalItem({ animal, setAnimals}) {
-    const {user} = useContext(AppContext)
+  const [active, setActive] = useState(false);
 
-    const  [active, setActive] = useState(false)
-    
-   
-    const isActive = () => {
-        setActive(prev => !prev)
+  const isActive = () => {
+    setActive((prev) => !prev);
+  };
+
+  // console.log(animal, animal.id)
+  const onHandleDelete = async () => {
+    const response = await axiosRequest.delete(`/animals/${animal.id}`);
+    if (response.status === 200) {
+      setAnimals((prev) => prev.filter((ani) => ani.id !== animal.id));
     }
-
-    // console.log(animal, animal.id)
-    const onHandleDelete = async() => {
-        const response = await axiosRequest.delete(`/animals/${animal.id}`)
-        if(response.status === 200){
-          setAnimals(prev => prev.filter(ani => ani.id !== animal.id))
-        }
-        
-      }
-    
-    
+  };
 
   return (
     <div>
-    <h3>{animal.title}</h3>
-    <p>{animal.description}</p>
-    <img src={animal.image} alt='animal' />
-    {user && user.id === animal.userId && (
-      <>
-        <button onClick={isActive}>update</button>
-      <button onClick={onHandleDelete}>delete</button>
-      <ModalWindow active={active} setActive={setActive}>
-        <AnimalUpdateFormAdd animal={animal} setAnimals={setAnimals} isActive={isActive}/>
-      </ModalWindow>
-      </>
-    )} 
-  </div>
-  )
+      <div
+        className="card mx-5 rounded-0 border-0 p-3 m-3"
+        style={{ width: "30rem" }}
+      >
+        <img src={animal.image} className="card-img  rounded-0" alt="animal" />
+        <div className="card-body">
+          <h3 className="card-title text-center bold">{animal.title}</h3>
+          <p className="card-text ">{animal.description}</p>
+          <div className="d-flex justify-content-between align-items-center">
+            {user && user.id === animal.userId && (
+              <>
+                <div>
+                  <button
+                    className="btn btn-primary rounded-0 "
+                    onClick={isActive}
+                  >
+                    Обновить
+                  </button>
+                </div>
+
+                <ModalWindow active={active} setActive={setActive}>
+                  <AnimalUpdateFormAdd
+                    animal={animal}
+                    setAnimals={setAnimals}
+                    isActive={isActive}
+                  />
+                </ModalWindow>
+              </>
+            )}
+            <button className="btn btn-primary rounded-0 " onClick={isActive}>
+              Посмотреть
+            </button>
+            {user && user.id === animal.userId && (
+              <>
+                <div className="d-flex justify-content-between">
+                  <button
+                    className="btn btn-danger rounded-0"
+                    onClick={onHandleDelete}
+                  >
+                    Удалить
+                  </button>
+                </div>
+
+                <ModalWindow active={active} setActive={setActive}>
+                  <AnimalUpdateFormAdd
+                    animal={animal}
+                    setAnimals={setAnimals}
+                    isActive={isActive}
+                  />
+                </ModalWindow>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default AnimalItem;
