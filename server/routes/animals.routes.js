@@ -61,13 +61,21 @@ router.put("/:animalId", verifyAccessToken, upload.single("image"), async (req, 
     const userId = res.locals.user.id;
     const { animalId } = req.params;
     const { title, description } = req.body;
-    const pathImages = "/img/" + req.file.filename;
+
+    let pathImages
+    
+ 
+    if (!req.file){
+      pathImages = AnimalServices.getOneAnimalbyId(+animalId).image
+    }else{
+      pathImages = "/img/" + req.file.filename;
+    }
+    
     console.log(title, description);
 
     if (
       title.trim() !== "" &&
-      description.trim() !== "" &&
-      pathImages.trim() !== ""
+      description.trim() !== ""
     ) {
       const animal = await AnimalServices.updateAnimal(+animalId, userId, {
         title,

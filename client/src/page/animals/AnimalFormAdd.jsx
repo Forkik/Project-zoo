@@ -35,6 +35,8 @@ function AnimalFormAdd({ setAnimals }) {
         // setImage('')
         // setTitle('')
         // setDescription('')
+
+        console.log(response);
       }
     } catch (error) {
       console.log(error);
@@ -46,13 +48,13 @@ function AnimalFormAdd({ setAnimals }) {
   return (
     <>
       <div className="d-flex justify-content-center m-5">
-        <div className="card border-0 w-25">
+        <div className="card border-0 w-25 rounded-0">
           <div className="card-body ">
             <form
-              className="d-flex flex-column align-items-center"
+              className="d-flex flex-column align-items-center "
               onSubmit={onHandleSubmit}
             >
-              <div className="mb-3 w-100">
+              <div className="mb-3 w-100 ">
                 <label class="form-label">Название</label>
                 <input
                   className="mb-3 form-control w-100"
@@ -81,7 +83,7 @@ function AnimalFormAdd({ setAnimals }) {
                 />
               </div>
 
-              <button className="btn btn-primary w-100 " type="submit">
+              <button className="btn btn-primary rounded-0 w-100 " type="submit">
                 Добавить
               </button>
               {title !== "" && description !== "" && image !== ""}
