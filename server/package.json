@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js -e js,json"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js --ext js, jsx, json",
+    "dev2": "node --watch app.js",
+    "db:c": "npx sequelize db:create",
+    "db:d": "npx sequelize db:drop",
+    "db:mig": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",
+    "db:seeds": "npx sequelize db:seed:undo:all && npx sequelize db:seed:all",
+    "dbr": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",

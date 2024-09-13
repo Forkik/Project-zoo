@@ -19,9 +19,9 @@
 }
 
 .navbar {
-    background-color: rgba(0, 66, 113, 0.408) !important; /* Полупрозрачный чёрный фон */
+    background-color: rgba(122, 122, 122, 0.408) !important; /* Полупрозрачный чёрный фон */
     position: fixed; /* Фиксируем навбар */
-    box-shadow: #01334e 0px 0px 15px;
+    box-shadow: #505050 0px 0px 15px;
     border: none;
     top: 0;
     width: 100%;
@@ -41,10 +41,6 @@
 .text-success {
     color: white !important;
     font-weight: 700 !important;
-}
-
-.text{
-
 }
 
 .image-container {
@@ -71,7 +67,7 @@
   }
   .overlay-text-form {
     position: absolute;
-    top: 55%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -152,4 +148,18 @@
 .btn-danger{
   background-color: #db3b3b !important;
   border: none;
+}
+
+.background-animals{
+  background: #ec7f53 linear-gradient(180deg, #ff8758 90%, #ffffff 100%);
+  height: 60% !important;
+}
+
+h-100{
+  height: 100vh !important;
+  
+}
+
+.back-animal-text{
+  background-color: #e288617a !important;
 }
