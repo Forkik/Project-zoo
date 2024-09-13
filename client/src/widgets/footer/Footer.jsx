@@ -15,7 +15,7 @@ function Footer({}) {
             className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
           >
             <img
-              src="./zoo.black.png"
+              src="/zoo.black.png"
               alt="Logo"
               width="10%"
               height="7%"

@@ -11,6 +11,7 @@ import TariffPage from "../page/tariff/TariffPage";
 import Navbar from "../widgets/navbar/Navbar";
 import Footer from "../widgets/footer/Footer";
 import ErrorPage from '../page/error/ErrorPage';
+import AnimalIdPage from "../page/animals/AnimalIdPage";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -68,6 +69,7 @@ function App() {
           element={<AnimalPage animals={animals} setAnimals={setAnimals} />}
         />
         <Route path="/" element={<HomePage />} />
+        <Route path="/animal/:animalId" element={<AnimalIdPage />} />
         <Route path="/authorization" element={<AuthPage />} />
         <Route path="/registration" element={<RegPage />} />
         <Route path="/logout" element={<LogoutPage />} />

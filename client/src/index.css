@@ -163,3 +163,15 @@ h-100{
 .back-animal-text{
   background-color: #e288617a !important;
 }
+
+.pointer{
+  cursor: pointer;
+}
+
+.text-overflow{
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

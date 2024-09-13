@@ -17,10 +17,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      status: {
-        allowNull: false,
-        type: Sequelize.TEXT,
-      },
       auditorium: {
         allowNull: false,
         type: Sequelize.TEXT,

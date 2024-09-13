@@ -14,7 +14,7 @@ function Navbar() {
             className="navbar-brand d-flex align-items-center text-success fs-4 nav-link"
           >
             <img
-              src="./zoo.png"
+              src="/zoo.png"
               alt="Logo"
               width="7%"
               height="7%"

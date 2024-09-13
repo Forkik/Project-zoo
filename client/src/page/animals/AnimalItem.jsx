@@ -3,11 +3,14 @@ import { AppContext } from "../../AppContext";
 import { axiosRequest } from "../../service/axiosInstance";
 import ModalWindow from "../shared/ui/ModalWindw";
 import AnimalUpdateFormAdd from "./AnimalUpdateFormAdd";
+import { useNavigate } from "react-router-dom";
 
 function AnimalItem({ animal, setAnimals }) {
   const { user } = useContext(AppContext);
 
   const [active, setActive] = useState(false);
+
+  const navigate = useNavigate()
 
   const isActive = () => {
     setActive((prev) => !prev);
@@ -24,13 +27,13 @@ function AnimalItem({ animal, setAnimals }) {
   return (
     <div>
       <div
-        className="card mx-5 rounded-0 border-0 p-3 m-3"
-        style={{ width: "30rem" }}
+        className="card mx-5 rounded-0 border-0 p-3 m-3 shadow "
+        style={{ width: "27rem" }}
       >
-        <img src={animal.image} className="card-img  rounded-0" alt="animal" />
+        <img src={animal.image} style={{ height: "350px", objectFit: "cover" }} className="card-img  rounded-0" alt="animal" />
         <div className="card-body">
           <h3 className="card-title text-center bold">{animal.title}</h3>
-          <p className="card-text ">{animal.description}</p>
+          <p className="card-text text-overflow">{animal.description}</p>
           <div className="d-flex justify-content-between align-items-center">
             {user && user.id === animal.userId && (
               <>
@@ -52,7 +55,7 @@ function AnimalItem({ animal, setAnimals }) {
                 </ModalWindow>
               </>
             )}
-            <button className="btn btn-primary rounded-0 " onClick={isActive}>
+            <button className="btn btn-primary rounded-0 " onClick={() => navigate(`/animal/${animal.id}`)}>
               Посмотреть
             </button>
             {user && user.id === animal.userId && (

@@ -13,6 +13,8 @@ function TariffFormItem({ tariffs, tariff, setTariffs, setActive }) {
   const statusError = formState.errors["status"]?.message;
   const auditoriumError = formState.errors["auditorium"]?.message;
   const priceError = formState.errors["price"]?.message;
+  const imageError = formState.errors["image"]?.message;
+
 
   const onHandleSubmit = async (data) => {
     try {
@@ -35,6 +37,15 @@ function TariffFormItem({ tariffs, tariff, setTariffs, setActive }) {
     <div>
       <form className="form" onSubmit={handleSubmit(onHandleSubmit)}>
         <h3 className="card-title text-center mb-3">Добавить тариф</h3>
+        <label class="form-label">Картинка</label>
+        <input
+          type="text"
+          className="form-control mb-3"
+          {...register("image", {
+            required: "Вставите картинку",
+          })}
+        />
+        {imageError && <div className="alert alert-danger">{imageError}</div>}
         <label class="form-label">Статус</label>
         <input
           type="text"
