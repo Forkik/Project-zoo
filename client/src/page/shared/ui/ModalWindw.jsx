@@ -8,7 +8,7 @@ function ModalWindow({ active, setActive, children }) {
       onClick={() => setActive(false)}
     >
       <div
-        className={active ? 'modal__content active' : 'modal__conten'}
+        className={active ? 'modal__content active rounded-0' : 'modal__content'}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

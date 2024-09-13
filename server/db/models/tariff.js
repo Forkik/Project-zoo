@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Tariff.init(
     {
+      image: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
       status: {
         allowNull: false,
         type: DataTypes.TEXT,

@@ -34,99 +34,103 @@ function RegPage() {
   };
   return (
     <>
-      <div className="card w-50 mx-auto mt-5">
-        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-          <div className="mb-3">
-            <label className="form-label">Ваше имя</label>
-            <input
-              {...register("name", {
-                required: "Заполните это поле",
-                pattern: {
-                  value: /^[A-Za-zА-Яа-яЁё]+$/,
-                  message: "Имя может содержать только буквы",
-                },
-              })}
-              type="text"
-              className="form-control"
-            />
-          </div>
-          {nameError && <div className="alert alert-danger">{nameError}</div>}
-          <div className="mb-3">
-            <label className="form-label">Ваша почта</label>
-            <input
-              {...register("email", {
-                required: "Заполните это поле",
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Неправильная почта",
-                },
-              })}
-              type="email"
-              className="form-control"
-            />
-          </div>
-          {emailError && <div className="alert alert-danger">{emailError}</div>}
-          <div className="mb-3 d-flex flex-column">
-            <label className="form-label">Password</label>
-            <div className="input-group">
+      <div style={{ marginTop: "7%", marginBottom: "7%" }}>
+        <div className="card w-50 mx-auto mt-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            <div className="mb-3">
+              <label className="form-label">Ваше имя</label>
               <input
-                {...register("password", {
+                {...register("name", {
                   required: "Заполните это поле",
-                  minLength: {
-                    value: 6,
-                    message: "Минимальная длина пароля 6 символов",
-                  },
                   pattern: {
-                    value: /^(?=.*[A-Za-z])(?=.*\d).{6,}$/,
-                    message:
-                      "Пароль должен содержать минимум 6 символов и включать буквы и цифры",
+                    value: /^[A-Za-zА-Яа-яЁё]+$/,
+                    message: "Имя может содержать только буквы",
                   },
                 })}
-                type={showPassword ? "text" : "password"}
+                type="text"
                 className="form-control"
               />
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                id="button-addon2"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? "Скрыть" : "Показать"}
-              </button>
             </div>
-          </div>
-          {passwordError && (
-            <div className="alert alert-danger">{passwordError}</div>
-          )}
-          <div className="mb-3 d-flex flex-column">
-            <label className="form-label">Потвердите пароль</label>
-            <div className="input-group">
+            {nameError && <div className="alert alert-danger rounded-0">{nameError}</div>}
+            <div className="mb-3">
+              <label className="form-label">Ваша почта</label>
               <input
-                {...register("confirmPassword", {
+                {...register("email", {
                   required: "Заполните это поле",
-                  validate: (value) =>
-                    value === watch("password") || "Пароли не совпадают",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Неправильная почта",
+                  },
                 })}
-                type={showConfirmPassword ? "text" : "password"}
+                type="email"
                 className="form-control"
               />
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                id="button-addon2"
-                onClick={() => setConfirmShowPassword(!showConfirmPassword)}
-              >
-                {showConfirmPassword ? "Скрыть" : "Показать"}
-              </button>
             </div>
-          </div>
-          {confirmPassword && (
-            <div className="alert alert-danger">{confirmPassword}</div>
-          )}
-          <button type="submit" className="btn btn-primary">
-            Зарегестрироваться
-          </button>
-        </form>
+            {emailError && (
+              <div className="alert alert-danger rounded-0">{emailError}</div>
+            )}
+            <div className="mb-3 d-flex flex-column">
+              <label className="form-label">Password</label>
+              <div className="input-group">
+                <input
+                  {...register("password", {
+                    required: "Заполните это поле",
+                    minLength: {
+                      value: 6,
+                      message: "Минимальная длина пароля 6 символов",
+                    },
+                    pattern: {
+                      value: /^(?=.*[A-Za-z])(?=.*\d).{6,}$/,
+                      message:
+                        "Пароль должен содержать минимум 6 символов и включать буквы и цифры",
+                    },
+                  })}
+                  type={showPassword ? "text" : "password"}
+                  className="form-control"
+                />
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "Скрыть" : "Показать"}
+                </button>
+              </div>
+            </div>
+            {passwordError && (
+              <div className="alert alert-danger rounded-0">{passwordError}</div>
+            )}
+            <div className="mb-3 d-flex flex-column">
+              <label className="form-label">Потвердите пароль</label>
+              <div className="input-group">
+                <input
+                  {...register("confirmPassword", {
+                    required: "Заполните это поле",
+                    validate: (value) =>
+                      value === watch("password") || "Пароли не совпадают",
+                  })}
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="form-control"
+                />
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2"
+                  onClick={() => setConfirmShowPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? "Скрыть" : "Показать"}
+                </button>
+              </div>
+            </div>
+            {confirmPassword && (
+              <div className="alert alert-danger rounded-0">{confirmPassword}</div>
+            )}
+            <button type="submit" className="btn btn-primary">
+              Зарегестрироваться
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

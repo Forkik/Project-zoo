@@ -4,6 +4,16 @@
     letter-spacing: 1px; 
 }
 
+.title{
+  font-weight: 800;
+  font-style: normal;
+  font-family: "Merriweather", monospace;
+}
+
+.bold{
+  font-weight: 600;
+  font-style: normal;
+}
 .nav-link:hover{
     cursor: pointer;
 }
@@ -59,6 +69,17 @@
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Тень для текста */
     text-align: center;
   }
+  .overlay-text-form {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Тень для текста */
+    text-align: center;
+  }
 
 
 
@@ -79,6 +100,10 @@
 
 .background{
     background: #01334e;
+    height: 60% !important;
+}
+.background-tickets{
+    background: #000200 linear-gradient(180deg, #000200 0%, #000200 5%, #034d6c 50%, #2cbbc5 90%, #ffffff 100%);
     height: 60% !important;
 }
 
@@ -118,4 +143,13 @@
 
 .top{
     margin-top: 2%; ;
+}
+
+.container{
+  background: transparent !important;
+}
+
+.btn-danger{
+  background-color: #db3b3b !important;
+  border: none;
 }
