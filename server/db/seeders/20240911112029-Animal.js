@@ -42,76 +42,15 @@ module.exports = {
           userId: 1,
       },
       {
-          title: "Совка",
-          image: "https://example.com/images/owl.jpg",
-          description: "Совы — ночные хищные птицы, обладающие отличным зрением и слухом, известные своей способностью охотиться в темноте.",
-          userId: 1,
-      },
-      {
           title: "Жираф",
           image: "https://example.com/images/giraffe.jpg",
           description: "Жираф — самое высокое наземное животное, известное длинной шеей и пятнистым окрасом.",
           userId: 1,
       },
-
-        {
-            title: "Слон",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Крупнейшее наземное животное, известное своим умом и социальным поведением. Обратите внимание на его длинный хобот!",
-            userId: 1,
-        },
-        {
-            title: "Тигр",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Крупный хищник с полосатым мехом. Посмотрите, как он охотится и играет в своем вольере.",
-            userId: 1,
-        },
-        {
-            title: "Лев",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Король джунглей, живущий в прайдах. Слушайте его мощный рык!",
-            userId: 1,
-        },
-        {
-            title: "Кенгуру",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Сумчатое животное из Австралии, способное прыгать на большие расстояния. Обратите внимание на его сумку для детенышей.",
-            userId: 1,
-        },
-        {
-            title: "Панда",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Медведь с черно-белым окрасом, питающийся бамбуком. Эти милые создания любят спать и играть!",
-            userId: 1,
-        },
-        {
-            title: "Дельфин",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Умное морское млекопитающее, известное своей игривостью. Не пропустите его акробатические трюки!",
-            userId: 1,
-        },
         {
             title: "Крокодил",
             image: "https://example.com/images/tiger.jpg",
             description: "Крупная рептилия, обитающая в тропических водах. Посмотрите, как он ловит свою добычу.",
-            userId: 1,
-        },
-        {
-            title: "Жираф",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Самое высокое наземное животное с длинной шеей. Обратите внимание на его красивые пятна!",
-            userId: 1,
-        },
-        {
-            title: "Собака",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Преданный домашний питомец, который любит играть. Узнайте о разных породах!",
-            userId: 1,
-        },
-        {
-            title: "Кошка",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Независимый домашний питомец, известный своим охотничьим инстинктом. Смотрите, как она играет!",
             userId: 1,
         },
         {
@@ -160,12 +99,6 @@ module.exports = {
             title: "Пингвин",
             image: "https://example.com/images/tiger.jpg",
             description: "Нелетающая птица, обитающая в Антарктике. Узнайте о его жизни в колонии!",
-            userId: 1,
-        },
-        {
-            title: "Крыса",
-            image: "https://example.com/images/tiger.jpg",
-            description: "Маленький грызун, известный своим умом и адаптивностью. Узнайте о их роли в экосистеме!",
             userId: 1,
         },
         {
