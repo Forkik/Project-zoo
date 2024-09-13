@@ -5,14 +5,13 @@ import ModalWindow from '../shared/ui/ModalWindw';
 import AnimalUpdateFormAdd from './AnimalUpdateFormAdd';
 
 
-function AnimalItem({ animal, setAnimals,  }) {
+function AnimalItem({ animal, setAnimals}) {
     const {user} = useContext(AppContext)
 
     const  [active, setActive] = useState(false)
     
    
     const isActive = () => {
-
         setActive(prev => !prev)
     }
 

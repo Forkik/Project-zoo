@@ -11,17 +11,32 @@ function AnimalFormAdd({ setAnimals }) {
 
     const {user} = useContext(AppContext)
 
-    console.log(user, 2345678)
     
 
     const onHandleSubmit = async(e) => {
         try {
             e.preventDefault()
-            if(user && user.isAdmin && (title.trim() !== '' && description.trim() !== '' && image.trim() !== '')) {
-                const response = await axiosRequest.post('/animals', {title, description, image, userId: 1})
+
+            const data = new FormData();
+
+              data.append('title', title);
+              data.append('image', image);
+              data.append('description', description);
+              data.append('userId', user.id)
+
+              
+
+            if(user && user.isAdmin && (title.trim() !== '' && description.trim() !== '')) {
+                const response = await axiosRequest.post('/animals', data, {
+                    'Content-Type': 'multipart/form-data',
+                  })
                 if(response.status === 201){
                     setAnimals(prev => [...prev, response.data.animal])
                 }
+                // setImage('')
+                // setTitle('')
+                // setDescription('')
+                
             }
            
         } catch (error) {
@@ -30,6 +45,8 @@ function AnimalFormAdd({ setAnimals }) {
         }
     }
 
+    console.log(image);
+    
   return (
 
     <>
@@ -37,7 +54,7 @@ function AnimalFormAdd({ setAnimals }) {
     <form onSubmit={onHandleSubmit}>
         <input type="text" placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)}/>
         <input type="text" placeholder='Description' value={description} onChange={(e) => setDescription(e.target.value)}/>
-        <input type="text" placeholder='Image' value={image} onChange={(e) => setImage(e.target.value)}/>
+        <input type="file" multiple onChange={(e) => setImage(e.target.files[0])}/>
         <button type='submit'>Add</button>
         {(title !== '' && description !== '' && image !== '' )}
      </form>

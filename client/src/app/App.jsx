@@ -27,7 +27,7 @@ function App() {
   const checkUser = async () => {
     try {
       const response = await axiosRequest.get("/tokens/refresh");
-      console.log(111, response);
+      // console.log(111, response);
       if (response.status === 200) {
         setUser(response.data.user);
         setAccessToken(response.data.setAccessToken)
